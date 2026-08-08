@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>GPS Monitor</title>
+    <!-- Leaflet -->
+    <link 
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <script 
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+    <!-- Remix Icon -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="dialog">
+        <i class="ri-cloud-line"></i>
+    </button>
+    <div class="panel" id="panel">
+        <div class="title">
+            <i class="ri-dashboard-fill"></i>
+            Vehicle Monitor
+        </div>
+        <div class="status disconnected" id="status">
+            <i class="ri-checkbox-blank-circle-fill"></i>
+            <span id="statusText">
+                Disconnected
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-compass-3-fill"></i>
+                Gyro
+            </span>
+
+            <span id="gyro">
+                null
+            </span>
+        </div>
+        <div class="row">
+        <span>
+            <i class="ri-speed-up-fill"></i>
+            Speed
+        </span>
+        <span id="speed">
+            null
+        </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-refresh-line"></i>
+                Roll
+            </span>
+            <span id="roll">
+                null
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-arrow-up-down-line"></i>
+                Pitch
+            </span>
+            <span id="pitch">
+                null
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-map-pin-fill"></i>
+                Latitude
+            </span>
+            <span id="lat">
+                null
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-map-pin-fill"></i>
+                Longitude
+            </span>
+            <span id="lon">
+                null
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <i class="ri-eye-fill"></i>
+                Eyes
+            </span>
+            <span id="closed">
+                null
+            </span>
+        </div>
+    </div>
+    <div id="map"></div>
+    <script src="script.js"></script>
+</script>
+</body>
+</html>

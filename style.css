@@ -1,0 +1,102 @@
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        /* Nút mở bảng */
+        .dialog {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 2000;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.3);
+        }
+        .dialog i {
+            font-size: 26px;
+            color: black;
+        }
+
+        /* Bảng thông tin */
+        .panel {
+            position: fixed;
+            bottom: 95px;
+            left: 20px;
+            width: 330px;
+            padding: 18px;
+            z-index: 2000;
+            background:
+                rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            display: none;
+            animation: popup .25s ease;
+        }
+        .panel.show {
+            display: block;
+        }
+        @keyframes popup {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .status i {
+            font-size: 14px;
+            color: red;
+        }
+        .connected i {
+            color: #00c853;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            margin: 6px 0;
+            background: #fafafa;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+        .row span:first-child {
+            color: #666;
+        }
+        .row span:last-child {
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
