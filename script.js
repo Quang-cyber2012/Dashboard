@@ -111,35 +111,40 @@ function updateData(data) {
         }
     }
 }
-async function getData() {
-    console.log("Fetching data...");
-    try {
-        const res =
-            await fetch("http://100.93.190.4:5000/RevData");
-        const data =
-            await res.json();
-            console.log(data);
-        document.getElementById("status")
-            .className =
-            "status connected";
-        document.getElementById("statusText")
-            .innerHTML =
-            "Connected";
-        updateData(data);
-    }
-    catch (error) {
-        console.log(error);
-        document.getElementById("status")
-            .className =
-            "status disconnected";
+const socket = io("http://192.168.1.23:5000");
 
-        document.getElementById("statusText")
-            .innerHTML =
-            "Disconnected";
-    }
-}
-getData();
-setInterval(
-    getData,
-    500
-);
+socket.on("connect", () => {
+    console.log("WebSocket connected");
+
+    document.getElementById("status").className =
+        "status connected";
+
+    document.getElementById("statusText").innerHTML =
+        "Connected";
+});
+
+socket.on("data", (data) => {
+    console.log("Received:", data);
+
+    updateData(data);
+});
+
+socket.on("disconnect", () => {
+    console.log("WebSocket disconnected");
+
+    document.getElementById("status").className =
+        "status disconnected";
+
+    document.getElementById("statusText").innerHTML =
+        "Disconnected";
+});
+
+socket.on("connect_error", (error) => {
+    console.log("Connection error:", error);
+
+    document.getElementById("status").className =
+        "status disconnected";
+
+    document.getElementById("statusText").innerHTML =
+        "Disconnected";
+});
